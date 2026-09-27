@@ -260,19 +260,6 @@
             <button class="btn btn-secondary btn-sm" onclick="adminLogout()">Logout</button>
         </div>
 
-<!-- Admin Dashboard -->
-<div id="adminDashboard" class="hidden">
-    <div class="container">
-        <div class="admin-header no-print">
-            <div>
-                <h2 style="color: #333;">👨‍🏫 Teacher Dashboard</h2>
-                <p style="color: #666; font-size: 14px;">Manage exams, students, and courses</p>
-            </div>
-            <div style="display: flex; gap: 8px;">
-                <button class="btn btn-info btn-sm" onclick="testFirebaseConnection()">🔥 Test Firebase</button>
-                <button class="btn btn-secondary btn-sm" onclick="adminLogout()">Logout</button>
-            </div>
-        </div>   
         <div id="adminMessages"></div>
 
         <div class="stats-grid no-print">
@@ -1042,17 +1029,7 @@ function closeExam(id) {
     const exam = exams.find(e => e.exam_id === id);
     if (exam) { exam.status = 'closed'; saveExams(); }
 }
-// Add this temporarily to test
-function testFirebaseConnection() {
-    database.ref('test').set({
-        timestamp: new Date().toISOString(),
-        device: navigator.userAgent
-    }).then(() => {
-        alert('✅ Firebase connection WORKS!');
-    }).catch(err => {
-        alert('❌ Firebase FAILED: ' + err.message);
-    });
-}
+
 // ═══════════════════════════════════════════════════════════════════════════
 // COURSE MANAGEMENT
 // ═══════════════════════════════════════════════════════════════════════════
